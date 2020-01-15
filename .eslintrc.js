@@ -1,8 +1,8 @@
 module.exports = {
-    extends: ['./node_modules/poetic/config/eslint/eslint-config.js'],
+    extends: ['react-app', './node_modules/poetic/config/eslint/eslint-config.js'],
     // Add custom rules here
     rules: {
-        indent: ['error', 4],
+        indent: ['error', 4, { SwitchCase: 1 }],
         'spaced-comment': [
             'error',
             'always',
@@ -16,6 +16,12 @@ module.exports = {
             files: ['style.ts'],
             rules: {
                 '@typescript-eslint/explicit-function-return-type': 'off',
+            },
+        },
+        {
+            files: ['*.ts', '*.tsx'],
+            rules: {
+                'no-undef': 'off',
             },
         },
     ],

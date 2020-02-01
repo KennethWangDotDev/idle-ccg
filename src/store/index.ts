@@ -5,8 +5,10 @@ import createRootReducer from './reducers';
 
 export const history = createBrowserHistory();
 
+// eslint-disable-next-line
 export default function configureStore(preloadedState?: any): Store {
     const composeEnhancer: typeof compose =
+        // eslint-disable-next-line
         (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
     const store = createStore(
         createRootReducer(history),

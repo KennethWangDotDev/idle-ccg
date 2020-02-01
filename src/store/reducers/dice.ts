@@ -1,14 +1,9 @@
-import { Action } from 'redux';
+import { createReducer, getType } from 'typesafe-actions';
+import { increment, decrement, add } from 'store/actions/dice';
 
-const counterReducer = (state = 0, action: Action): number => {
-    switch (action.type) {
-        case 'INCREMENT':
-            return state + 1;
-        case 'DECREMENT':
-            return state - 1;
-        default:
-            return state;
-    }
-};
+const counterReducer = createReducer(5)
+    .handleType([getType(increment)], (state) => state + 1)
+    .handleType([getType(decrement)], (state) => state - 1)
+    .handleType([getType(add)], (state, action) => state + action.payload);
 
 export default counterReducer;
